@@ -2,10 +2,9 @@ import sqlite3
 
 class Store:
     def __init__(self) -> None:
-        self.db_name = 'Movies.db'
-        self.table_name = 'Top_50'
+        self.db_name = 'SQliteDatabase.db'
 
-    def store_to_db(self,df):
+    def store_to_db(self,df,table_name):
         conn = sqlite3.connect(self.db_name)
-        df.to_sql(self.table_name, conn, if_exists='replace', index=False)
-        conn.close()
+        df.to_sql(table_name, conn, if_exists='replace', index=False)
+        return conn

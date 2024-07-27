@@ -1,14 +1,10 @@
 import requests
-import sqlite3
 import pandas as pd
 from bs4 import BeautifulSoup
 
-class Scrape:
+class ScrapeData:
     def __init__(self) -> None:
         self. url = 'https://web.archive.org/web/20230902185655/https://en.everybodywiki.com/100_Most_Highly-Ranked_Films'
-        db_name = 'Movies.db'
-        table_name = 'Top_50'
-        csv_path = '/home/project/top_50_films.csv'
 
     def get_data(self):
         df = pd.DataFrame(columns=["Average Rank","Film","Year"])
@@ -30,6 +26,8 @@ class Scrape:
                     count+=1
             else:
                 break
+
+        return df
 
 
 
